@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================
+     ① サイトの名前と説明（自由に書き換えてください）
+     ============================================================ -->
+<title>てがきイラスト｜無料でダウンロードできる手描きイラスト</title>
+<meta name="description" content="水彩の手描きイラストを無料で配布しています。資料づくりやSNSにどうぞ。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     ② 色。この6つを変えるとサイト全体の雰囲気が変わります
+     ============================================================ */
+  :root{
+    --ink:      #4a4340;   /* 文字の色 */
+    --ink-soft: #8f8681;   /* うすい文字 */
+    --paper:    #fdfbf8;   /* 背景 */
+    --card:     #ffffff;   /* カード */
+    --line:     #ece5dd;   /* 線 */
+    --accent:   #e08a94;   /* さし色（ピンク） */
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Zen Maru Gothic", sans-serif;
+    line-height:1.9; font-size:15px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 20px; }
+  a{ color:var(--accent); }
+
+  header.bar{ background:var(--card); border-bottom:1px solid var(--line); }
+  header.bar .wrap{ display:flex; justify-content:space-between; align-items:center;
+    padding-top:16px; padding-bottom:16px; }
+  .logo{ font-size:16px; color:var(--ink); text-decoration:none; }
+  .bar nav a{ font-size:13px; color:var(--ink-soft); text-decoration:none; }
+
+  .hero{ text-align:center; padding:56px 0 32px; }
+  .eyebrow{ font-family:"JetBrains Mono",monospace; font-size:11px;
+    letter-spacing:.18em; color:var(--accent); margin-bottom:14px; }
+  .hero h1{ font-size:clamp(24px,4.5vw,34px); font-weight:700; margin-bottom:12px; }
+  .hero p{ color:var(--ink-soft); max-width:28em; margin:0 auto; font-size:14px; }
+
+  .toolbar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+    padding:18px 0; border-bottom:1px solid var(--line);
+    position:sticky; top:0; background:var(--paper); z-index:10; }
+  #q{ flex:1 1 220px; min-width:0; padding:11px 16px; font-size:14px;
+    font-family:inherit; color:var(--ink);
+    background:var(--card); border:1px solid var(--line); border-radius:99px; }
+  #q:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+
+  .chips{ display:flex; flex-wrap:wrap; gap:6px; }
+  .chip{ font-size:12px; font-family:inherit; padding:7px 15px; border-radius:99px;
+    border:1px solid var(--line); background:transparent; color:var(--ink-soft);
+    cursor:pointer; transition:.15s; }
+  .chip:hover{ border-color:var(--accent); color:var(--accent); }
+  .chip[aria-pressed="true"]{ background:var(--ink); border-color:var(--ink); color:var(--paper); }
+  .chip:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  .count{ font-family:"JetBrains Mono",monospace; font-size:11px;
+    color:var(--ink-soft); padding:16px 0 0; }
+
+  .grid{ display:grid; gap:14px; margin:16px 0 0;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:18px 14px 14px; display:flex; flex-direction:column; gap:12px;
+    transition:.18s; }
+  .card:hover{ border-color:var(--accent); transform:translateY(-2px); }
+
+  .thumb{ aspect-ratio:1/1; display:grid; place-items:center; border-radius:12px;
+    background-image:
+      linear-gradient(45deg,#f6f1ea 25%,transparent 25%,transparent 75%,#f6f1ea 75%),
+      linear-gradient(45deg,#f6f1ea 25%,transparent 25%,transparent 75%,#f6f1ea 75%);
+    background-size:16px 16px; background-position:0 0,8px 8px; }
+  .thumb img{ width:76%; height:76%; object-fit:contain; }
+
+  .name{ font-size:14px; }
+  .card .dl{ display:block; text-align:center; text-decoration:none; margin-top:auto;
+    font-size:12px; padding:10px 0; border-radius:99px;
+    border:1px solid var(--line); color:var(--ink); transition:.15s; }
+  .card .dl:hover{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .card .dl:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  .empty{ padding:56px 20px; text-align:center; color:var(--ink-soft); font-size:14px; }
+
+  footer{ border-top:1px solid var(--line); margin-top:56px; padding:36px 0 72px;
+    font-size:13px; color:var(--ink-soft); }
+  footer h2{ font-size:15px; color:var(--ink); margin:24px 0 8px; }
+  footer h2:first-child{ margin-top:0; }
+  footer ul{ list-style:none; }
+  footer li{ padding-left:1.1em; text-indent:-1.1em; }
+  footer li::before{ content:"・"; color:var(--accent); }
+
+  @media (prefers-reduced-motion:reduce){ *{ transition:none !important; } }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a href="#" class="logo">てがきイラスト</a>
+    <nav><a href="#terms">利用について</a></nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">FREE ILLUSTRATIONS</p>
+    <h1>てがきイラスト</h1>
+    <p>水彩の手描きイラストを無料で配布しています。資料づくりやSNSにどうぞ。</p>
+  </section>
+
+  <div class="toolbar">
+    <input id="q" type="search" placeholder="さがす（例：ハート、popcorn）" aria-label="イラストを検索">
+    <div class="chips" id="chips" role="group" aria-label="カテゴリで絞り込む"></div>
+  </div>
+
+  <p class="count" id="count"></p>
+  <main class="grid" id="grid"></main>
+  <p class="empty" id="empty" hidden>見つかりませんでした。別の言葉で探してみてください。</p>
+
+  <footer id="terms">
+    <h2>ご利用について</h2>
+    <p>すべて手描きのオリジナルイラストです。個人が制作しています。</p>
+
+    <h2>使っていいもの</h2>
+    <ul>
+      <li>資料、チラシ、お知らせ、スライド、印刷物</li>
+      <li>ウェブサイト、SNS投稿</li>
+      <li>色やサイズの変更、他の素材との組み合わせ</li>
+    </ul>
+
+    <h2>ご遠慮いただきたいもの</h2>
+    <ul>
+      <li>イラスト単体、またはまとめての再配布・販売</li>
+      <li>イラストが主役になる商品（グッズ、スタンプなど）の販売</li>
+    </ul>
+
+    <h2>クレジット表記</h2>
+    <p>不要です。リクエストは <a href="mailto:your@email.com">your@email.com</a> までどうぞ。</p>
+  </footer>
+
+</div>
+
+<script>
+/* ================================================================
+   ③ ★ここだけ編集すればイラストが増えます★
+
+   イラストを1点追加するには:
+     1. images フォルダに 透過PNG を入れる（例: cake.png）
+     2. 下のリストに1行足す
+
+   file … images フォルダの中のファイル名（拡張子まで）
+   name … サイトに表示される名前
+   cat  … カテゴリ。下の CATEGORIES にあるIDのどれか
+   tags … 検索でヒットさせたい言葉。多めに書くほど見つかりやすい
+   ================================================================ */
+
+const CATEGORIES = [
+  { id:"feeling", label:"きもち" },
+  { id:"daily",   label:"くらし" },
+  { id:"hobby",   label:"しゅみ" },
+  { id:"message", label:"れんらく" },
+];
+
+const ICONS = [
+  { file:"popcorn.png",   name:"ポップコーン",       cat:"hobby",   tags:"ポップコーン 映画 おやつ 映画館 popcorn movie" },
+  { file:"letter.png",    name:"手紙",               cat:"message", tags:"手紙 封筒 レター 封蝋 お便り letter mail" },
+  { file:"gift.png",      name:"プレゼント",         cat:"feeling", tags:"プレゼント ギフト 贈り物 誕生日 gift present" },
+  { file:"heart.png",     name:"ハート",             cat:"feeling", tags:"ハート 好き 愛 感謝 heart love" },
+  { file:"handheart.png", name:"指ハート",           cat:"feeling", tags:"指ハート ハート 手 ジェスチャー finger heart" },
+  { file:"memo.png",      name:"メモ帳",             cat:"daily",   tags:"メモ メモ帳 ノート リスト 予定 memo note" },
+  { file:"easel.png",     name:"イーゼルと絵",       cat:"hobby",   tags:"イーゼル 絵 絵画 アート 風景画 easel painting" },
+  { file:"phone.png",     name:"スマホでメッセージ", cat:"message", tags:"スマホ メッセージ チャット 連絡 phone chat" },
+];
+
+/* ---- ここから下は触らなくて大丈夫です ---- */
+
+const grid  = document.getElementById('grid');
+const chips = document.getElementById('chips');
+const q     = document.getElementById('q');
+const empty = document.getElementById('empty');
+const count = document.getElementById('count');
+let cat = 'all';
+
+[{id:'all',label:'すべて'}, ...CATEGORIES].forEach(c => {
+  const b = document.createElement('button');
+  b.className = 'chip';
+  b.textContent = c.label;
+  b.setAttribute('aria-pressed', c.id === 'all');
+  b.addEventListener('click', () => {
+    cat = c.id;
+    [...chips.children].forEach(x => x.setAttribute('aria-pressed', x === b));
+    render();
+  });
+  chips.appendChild(b);
+});
+
+function render(){
+  const s = q.value.trim().toLowerCase();
+  const hits = ICONS.filter(ic =>
+    (cat === 'all' || ic.cat === cat) &&
+    (s === '' || (ic.name + ' ' + ic.tags).toLowerCase().includes(s))
+  );
+
+  grid.innerHTML = hits.map(ic => `
+    <div class="card">
+      <div class="thumb">
+        <img src="images/${ic.file}" alt="${ic.name}のイラスト" loading="lazy">
+      </div>
+      <div class="name">${ic.name}</div>
+      <a class="dl" href="images/${ic.file}" download>ダウンロード</a>
+    </div>
+  `).join('');
+
+  count.textContent  = `${hits.length} / ${ICONS.length} 点`;
+  empty.hidden       = hits.length > 0;
+  grid.style.display = hits.length ? 'grid' : 'none';
+}
+
+q.addEventListener('input', render);
+render();
+</script>
+
+</body>
+</html>
